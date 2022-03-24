@@ -16,11 +16,11 @@
 
 ## Prerequisites
 
-Ruby (ruby --v)
-SQLite3 (sqlite3 --v)
-Postgrestsql (psql --version)
-Node.js (node --v)
-Yarn (yarn --v)
+- Ruby (ruby --v)
+- SQLite3 (sqlite3 --v)
+- Postgrestsql (psql --version)
+- Node.js (node --v)
+- Yarn (yarn --v)
 
 ### Setup
 
