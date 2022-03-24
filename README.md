@@ -1,24 +1,44 @@
-# README
+My Blog App
+Setup blog app website ou will create a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Built With
+Ruby on Rails
+Rspec
+Psql
+Getting Started
+Prerequisites
+Ruby (ruby --v)
+SQLite3 (sqlite3 --v)
+Postgrestsql (psql --version)
+Node.js (node --v)
+Yarn (yarn --v)
+To get a local copy up and running follow these simple example steps.
 
-Things you may want to cover:
+Run in your terminal git clone git@github.com:Mhdez221993/blog_app.git
 
-* Ruby version
+Install RSpec
+To run the tests locally :
 
-* System dependencies
+To instal RSpec for testing please run the following command on your terminal:
+gem install rspec
 
-* Configuration
+Helpful links to solve some issues
+Could not find gem
+Install psql
+PG:: InsufficientPrivilege: ERROR: must be owner of database blog_app_development
 
-* Database creation
+Author
+👤 Claude Mucyo
 
-* Database initialization
+GitHub: @Mucyosoda
+Twitter: @claudemucyo1
+LinkedIn: @/mucyoclaude
 
-* How to run the test suite
+Contributing
+Contributions, issues, and feature requests are welcome!
 
-* Services (job queues, cache servers, search engines, etc.)
+Show your support
+Give a ⭐️ if you like this project!
 
-* Deployment instructions
-
-* ...
+Acknowledgments
+To all microverse staff and students
