@@ -66,6 +66,7 @@ Give a ⭐️ if you like this project!
 
 - To all microverse staff and students
 - family and friends
+- our God above all
 
 ## 📝 License
 
