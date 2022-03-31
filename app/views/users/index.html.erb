@@ -1,23 +1,15 @@
-<div class="page-container">
-<h1><%= @new_user %></h1>
-<h1 class="text-align-center">Users</h1>
-<ul>
-  <% @user.each do |user| %>
-    <li class="background-color-aliceblue">
-      <%= link_to "#{root_path}users/#{user.id}", class: "text-decoration-none" do %>
-      <div class="display-flex">
-        <div class="user-photo-container">
-          <img class="user-photo" src=<%= user.photo %> />
-        </div>
-        <div class="user-text-details-container">
-          <h2>
-            <%= user.name %>
-          </h2>
-          <p>Number of posts: <%= @posts.where(author_id: user.id).count %></p>
-        </div>
-      </div>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+
+<div class="users-container">
+<h1 class="users-heading">All users <%= @users.length%></h1>
+<% @users.each do |user| %>
+  <%= link_to user_path(user.id), class:"text-dec" do %>
+<div class="user-box">
+<img class="user-img" src=<%= user.photo %> alt="user"/>
+<div class="user-info-box">
+<h2 class="user-name"><%= user.name %></h2>
+<p class="user-post-count">Number of posts: <%= user.posts_counter%></p>
+</div>
+</div>
+<% end%>
+<% end %>
 </div>

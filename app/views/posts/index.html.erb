@@ -1,39 +1,33 @@
-<div class="page-container">
-  <div class="display-flex">
-    <div class="user-photo-container">
-      <img class="user-photo" src=<%= @user.photo %> >
-    </div>
-    <div class="user-text-details-container">
-      <h2><%= @user.name %></h2>
-      <p>Number of posts: <%= @posts.length %></p>
-    </div>
+<div class="posts-container">
+
+<div class="user-box">
+<img class="user-img" src=<%= @user.photo %> alt="user"/>
+<div class="user-info-box">
+<h2 class="user-name"><%= @user.name %></h2>
+<p class="user-post-count">Number of posts: <%= @user.posts_counter%></p>
+</div>
+</div>
+
+<% @posts.each do |post| %>
+  <%= link_to user_post_path(@user.id, post.id), class:"text-dec" do %> 
+  <div>
+  <div class="posts-info">
+  <h2 class="user-post-title">Post : <%= post.title %></h2>
+  <p class="user-post-text"><%= post.text %></p>
+  <h3 class="user-post-counters">Comments: <%= post.comments_counter%>, Likes: <%= post.like_counter %><h3>
   </div>
-  <ul>
-    <% @posts.each do |post| %>
-    <%= link_to "#{root_path}users/#{@user.id}/posts/#{post.id}", class: "text-decoration-none" do %>
-      <li class="padding-20-px background-color-aliceblue">
-        <h3> <%= post.title %> </h3>
-        <p class="paragraph-text display-flex flex-direction-column">
-          <span><%= post.text %></span>
-          <span class="align-self-end">Comments: <%= @comments.where(post_id: post.id).count %>, Likes: <%= @likes.where(posts_id: post.id).count %></span>
-        </p>
-        <h4>Comments:</h4>
-          <% post.five_recent_comments.each do |single_comment|%>
-          <% if single_comment.posts_id == post.id %>
-            <% commentor = User.find_by(id: single_comment.author_id) %>
-            <p>
-              <span><strong><%= commentor.name %></strong>: </span>
-              <span><em><%= single_comment.text %></em></span>
-            </p>
-          <% end %>
-        <% end %>
-      </li>
-      <% end %>
+  <% end %>
+
+  <div class="post-comments">
+  <% post.recent_comments.each do |comment|%>
+    <h3><%= comment.author.name %><%= comment.text %></h3>
     <% end %>
-  </ul>
-    <div class="text-align-center">
-
-
-    <button class="see-all-posts-button">Pagination</button>
+    </div>
   </div>
+  <% end%>
+
+  <button class="button">
+    Pagination
+  </button>
+
 </div>

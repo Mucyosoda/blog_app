@@ -1,29 +1,17 @@
-<div class="page-container">
-  <div class="display-flex justify-content-space-between align-items-center">
-    <div>
-      <h2><%= @post.title %> By: <%= @user.name %></h2>
-    </div>
-    <div>
-      <p>
-        <span>Comments: <%= @comments.where(post_id: @post.id).count %>, Likes: <%= @likes.where(posts_id: @post.id).count %></span>
-      </p>
-    </div>
+<div class="post-show-c">
+
+  <div class="user-recent-post">
+  <div class="post-inf-box">
+  <h2 class="user-post-title">Post : <%= @post.title %> by <%= @user.name %></h2>
+  <h3>Comments: <%= @post.comments_counter%>, Likes: <%= @post.like_counter %><h3>
   </div>
-  <div>
-    <p class="paragraph-text"><%= @post.text %></p>
+  <p class="user-post-text"><%= @post.text %></p>
   </div>
-  <div class="background-color-aliceblue padding-20-px">
-  <h4>Comments:</h4>
-  <% @comments.each do |comment| %>
-    <% if comment.posts_id == @post.id %>
-      <p>
-        -<% @users.each do |user| %>
-          <%= user.name if user.id == comment.author_id %>
-        <% end %>
-        :<%= comment.text %></p>
+
+  <div class="post-comments">
+  <% @comments.each do |comment|%>
+    <h3><%= comment.author.name %><%= comment.text %></h3>
     <% end %>
-  <% end %>
-
-
   </div>
+
 </div>

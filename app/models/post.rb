@@ -1,16 +1,15 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   belongs_to :author, class_name: 'User'
-  has_many :comments, foreign_key: 'posts_id'
-  has_many :likes, foreign_key: 'posts_id'
-  after_save :post_counter
+  has_many :comments
+  has_many :likes
 
-  def five_recent_comments
-    comments.limit(5).order(created_at: :desc)
+  def update_posts_counter
+    author.increment!(:posts_counter)
   end
 
-  private
-
-  def post_counter
-    author.increment!(:PostsCounter)
+  def recent_comments
+    comments.limit(5).order(created_at: :desc)
   end
 end
