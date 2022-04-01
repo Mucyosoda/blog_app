@@ -1,29 +1,13 @@
-<div class="page-container">
-  <div class="display-flex justify-content-space-between align-items-center">
-    <div>
-      <h2><%= @post.title %> By: <%= @user.name %></h2>
-    </div>
-    <div>
-      <p>
-        <span>Comments: <%= @comments.where(post_id: @post.id).count %>, Likes: <%= @likes.where(posts_id: @post.id).count %></span>
-      </p>
-    </div>
-  </div>
-  <div>
-    <p class="paragraph-text"><%= @post.text %></p>
-  </div>
-  <div class="background-color-aliceblue padding-20-px">
-  <h4>Comments:</h4>
-  <% @comments.each do |comment| %>
-    <% if comment.posts_id == @post.id %>
-      <p>
-        -<% @users.each do |user| %>
-          <%= user.name if user.id == comment.author_id %>
-        <% end %>
-        :<%= comment.text %></p>
-    <% end %>
+<div class="post_show">
+  <%= render 'post', post: @post %>
+  <%= render 'comment', comments: @post.comments%>
+  <h2>Add a comment:</h2>
+  <%= form_with model: [ @post, @post.comments.build ] do |form| %>
+    <p>
+      <%= form.text_field :text %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
   <% end %>
-            <%= render "partials/comment" %>
-
-  </div>
 </div>
