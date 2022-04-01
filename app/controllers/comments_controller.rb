@@ -1,25 +1,23 @@
 class CommentsController < ApplicationController
-  before_action :current_user
-
   def new
     @comment = Comment.new
   end
 
   def create
-    @post = Post.find(params[:post_id])
-    @user = @post.user
-    @comment = @post.comments.new(user_id: @user.id, text: commnet_params[:text])
-    if @comment.save
-      flash[:notice] = 'Comment added succesfully'
-    else
-      flash[:alert] = 'Add Comment failed'
-    end
-    redirect_to user_post_path(@user.id, @post.id)
+    @comment = Comment.new(author_id: current_user.id, text: comment_params[:text], post_id: params[:post_id])
+    redirect_back(fallback_location: root_path)
+    flash.alert = if @comment.save
+                    'Comment posted...'
+                  else
+                    'Comment failed...'
+                  end
   end
 
-  # private
+  def update; end
 
-  def commnet_params
+  private
+
+  def comment_params
     params.require(:comment).permit(:text)
   end
 end

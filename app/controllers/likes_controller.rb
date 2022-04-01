@@ -1,13 +1,22 @@
 class LikesController < ApplicationController
   def new
-    @like = Like.new
+    @like = Comment.new
   end
 
   def create
-    post = Post.find(params[:format])
-    like = post.likes.new(user_id: current_user.id)
+    @like = Like.new(author_id: current_user.id, post_id: params[:post_id])
+    flash.alert = if @like.save
+                    'Comment posted...'
+                  else
+                    'Comment failed...'
+                  end
+  end
 
-    flash[:alert] = 'Add likes unsuccesful' unless like.save
-    redirect_to user_path(post.user.id)
+  def update; end
+
+  private
+
+  def like_params
+    params.require(:like).permit(:post_id)
   end
 end
