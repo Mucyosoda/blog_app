@@ -1,37 +1,35 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :request do
-  describe 'GET index' do
-    before(:each) { get '/users' }
+RSpec.describe 'USERS', type: :request do
+  describe 'USERS GET #index' do
+    before(:example) { get('/users#index') }
 
-    it 'Should be 200' do
+    it 'server returns 200 then server is ok' do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'should render a template' do
-      expect(response).to render_template('users/index')
+    it 'template is rendering correctly' do
+      expect(response).to render_template(:index)
     end
 
-    it 'should test placeholder text inside template' do
-      expect(response.body).to include('Show all users')
+    it 'shows correct body content of index' do
+      expect(response.body).to include('list of users')
     end
   end
 
-  describe 'GET show' do
-    before(:each) { get '/users/25' }
+  describe 'USERS GET #show' do
+    before(:example) { get('/users/show') }
 
-    it 'Should be 200' do
+    it 'return 200 for correct server' do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'should render a template' do
-      expect(response).to render_template('users/show')
+    it 'shows the correct show template' do
+      expect(response).to render_template(:show)
     end
 
-    it 'should test placeholder text inside template' do
-      expect(response.body).to include('Show users info')
+    it 'shows correct body content of USERS#show' do
+      expect(response.body).to include('show user details by index id')
     end
   end
 end

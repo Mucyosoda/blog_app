@@ -1,10 +1,8 @@
-# frozen_string_literal: true
-
 class Comment < ApplicationRecord
-  belongs_to :author, class_name: 'User'
+  belongs_to :user, class_name: 'User', foreign_key: 'user_id'
   belongs_to :post
 
-  def update_comments_counter
+  def comments_counter_for_post(post)
     post.increment!(:comments_counter)
   end
 end
