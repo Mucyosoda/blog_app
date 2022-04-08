@@ -1,35 +1,35 @@
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :request do
-  describe 'GET #index' do
-    it 'should have a response status code of 200 for success' do
-      get users_path
-      expect(response).to have_http_status(200)
+RSpec.describe 'USERS', type: :request do
+  describe 'USERS GET #index' do
+    before(:example) { get('/users#index') }
+
+    it 'server returns 200 then server is ok' do
+      expect(response).to have_http_status(:ok)
     end
 
-    it 'should render correct template' do
-      get users_path
+    it 'template is rendering correctly' do
       expect(response).to render_template(:index)
     end
 
-    it 'should have correct placeholder' do
-      get users_path
-      expect(response.body).to include('This page displays the all users')
+    it 'shows correct body content of index' do
+      expect(response.body).to include('list of users')
     end
   end
 
-  describe 'GET #show' do
-    before(:each) { get user_path(1) }
-    it 'should have a response status code of 200 for success' do
-      expect(response).to have_http_status(200)
+  describe 'USERS GET #show' do
+    before(:example) { get('/users/show') }
+
+    it 'return 200 for correct server' do
+      expect(response).to have_http_status(:ok)
     end
 
-    it 'should render correct template' do
+    it 'shows the correct show template' do
       expect(response).to render_template(:show)
     end
 
-    it 'should have correct placeholder' do
-      expect(response.body).to include('This page displays the users details')
+    it 'shows correct body content of USERS#show' do
+      expect(response.body).to include('show user details by index id')
     end
   end
 end

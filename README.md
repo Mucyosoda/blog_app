@@ -10,7 +10,8 @@
 - Built With
 - Ruby on Rails
 - Rspec
-- Psql
+- Postgresql
+
 
 ## Getting Started
 
