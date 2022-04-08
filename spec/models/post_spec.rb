@@ -1,43 +1,47 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  describe 'input data' do
-    before(:each) do
-      @user = User.create(name: 'Tufoin', bio: 'Tufoins info', postcounter: 0)
-    end
-    subject { @user.posts.new(title: 'Big', text: 'Small', commentscounter: 0, likescounter: 0) }
-
-    it 'is valid with valid attributes' do
-      expect(subject).to be_valid
+  describe 'Validaiton for post' do
+    subject do
+      henry = User.new(name: 'Henry Kc', photo: 'profile.png',
+                       bio: 'I am coming out to be the best computer programmer', posts_counter: 0)
+      Post.new(title: 'My best friend', text: 'He will be unvailed at the end of my program at Microverse',
+               comments_counter: 3, likes_counter: 3, author_id: henry.id)
     end
 
-    it 'is valid commentscounter >= 0' do
-      subject.commentscounter = -2
-      expect(subject).to be_invalid
-    end
+    before { subject.save }
 
-    it 'is valid title present' do
+    it 'Should have title present' do
       subject.title = nil
-      expect(subject).to be_invalid
+      expect(subject).to_not be_valid
     end
 
-    it 'is valid title blank or not' do
-      subject.title = ''
-      expect(subject).to be_invalid
+    it 'Should have title not being too long' do
+      subject.title = 'one' * 200
+      expect(subject).to_not be_valid
     end
 
-    it 'should count the number of comments' do
-      subject.commentscounter = 15
-      expect(subject.commentscounter).to eq(15)
+    it 'Should have comments counter as an integer' do
+      subject.comments_counter = 0.033
+      expect(subject).to_not be_valid
     end
 
-    it 'should count the number of likes' do
-      subject.likescounter = 10
-      expect(subject.likescounter).to eq(10)
+    it 'Should have comments counter not be less than zero' do
+      subject.comments_counter = -1
+      expect(subject).to_not be_valid
+    end
+
+    it 'Should have likes counter not be less than zero' do
+      subject.likes_counter = -1
+      expect(subject).to_not be_valid
     end
   end
 
-  describe 'Association' do
-    it { should belong_to(:user).without_validating_presence }
+  describe 'Test for last recent posts' do
+    subject { User.new(name: 'Henry Kc', photo: 'profile.png', bio: 'Henry the great', posts_counter: 0) }
+    before { subject.save }
+    it 'Should have maximum of five comments' do
+      expect(subject.last_recent_posts).to eq(subject.last_recent_posts)
+    end
   end
 end

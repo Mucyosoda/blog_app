@@ -1,3 +1,19 @@
-<ul class="home-page-user">
-  <%= render @users %>
-</ul>
+    <%if user_signed_in?%>
+<%= button_to "logout2", destroy_user_session_path, method: :delete  %>
+<section>
+  <ul class="users">
+  <% @users.each do |user| %>
+    <%= link_to user_path(user.id) do %>
+      <li class="user">
+        <%= render :partial => 'partials/image_and_user', locals: { user: user } %>
+      </li>
+    <% end %>
+  <% end %>
+  
+  </ul>
+  
+</section>
+
+ <%else%>
+     <%= render partial: "unsinged"%>
+    <%end %>
