@@ -10,7 +10,8 @@
 - Built With
 - Ruby on Rails
 - Rspec
-- Psql
+- Postgresql
+
 
 ## Getting Started
 
@@ -52,6 +53,11 @@ gem install rspec
 - Twitter: [@claudemucyo1](https://twitter.com/claudemucyo1)
 - LinkedIn: [@/mucyoclaude](linkedin.com/in/mucyoclaude)
 
+👤 **Mahbub Alam**
+- GitHub: [@mahbubul14](https://github.com/mahbubul14)
+- Twitter: [@twitterhandle](https://twitter.com/mahbubul_14)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/mahbubul14/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
@@ -67,6 +73,7 @@ Give a ⭐️ if you like this project!
 - To all microverse staff and students
 - family and friends
 - our God above all
+- My partner
 
 ## 📝 License
 
