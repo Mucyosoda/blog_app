@@ -11,6 +11,7 @@
 - Ruby on Rails
 - Rspec
 - Postgresql
+- cancancan
 
 
 ## Getting Started
