@@ -1,10 +1,16 @@
-<div class="user_show">
-  <%= render @user %>
-  <h2  class="bio"><span>Bio:</span><br/>
-    <%= @user.bio %>
-  </h2>
-  <%= render 'post', posts: @user.posts %>
-  <div class="all_post">
-    <button type="button" class="btn btn-secondary"><%= link_to "existing user post", user_posts_path(@user.id) %></button>
+<section class="show-container">
+  <%= render :partial => 'partials/image_and_user', locals: {user: @user} %>
+  <div class="bio">
+  <h2 class="bio-heading">Bio</h2>
+  <p class="bio-text"><%= @user.bio %></p>
   </div>
-</div>
+  <ul class="posts-container">
+    <% @posts.reverse.each do |post| %>
+      <%= render :partial => 'partials/post', locals: {post: post} %>
+    <% end %>
+  </ul>
+  <button class="see-all-btn">
+    <%= link_to "See All Posts", user_posts_path(@user) %>
+  </button>
+  
+</section>
