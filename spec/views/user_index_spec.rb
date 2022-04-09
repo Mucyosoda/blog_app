@@ -4,13 +4,13 @@ RSpec.feature 'User page', js: true, type: :feature do
   background do
     visit new_user_session_path
     @first_user = User.create(name: 'Sammie',
-                              photo: 'user_logo-091.png',
+                              photo: 'user_logo-0691c9b921c343343feb777298f064eef6445537eaa4716f7ff510720bb2ff91.png',
                               bio: 'stuff about sammie',
                               posts_counter: 0, email: 'sammie@gmail.com',
                               password: 'abcde', confirmed_at: Time.now)
 
     @second_user = User.create(name: 'Alice',
-                               photo: 'user_logo-0691c92ff91.png',
+                               photo: 'user_logo-0691c9b921c343343feb777298f064eef6445537eaa4716f7ff510720bb2ff91.png',
                                bio: 'stuff about alice',
                                posts_counter: 0, email: 'alice@gmail.com', password: 'abcdefg',
                                confirmed_at: Time.now)
@@ -33,7 +33,7 @@ RSpec.feature 'User page', js: true, type: :feature do
       users = User.all
       visit users_path
       users.each do |_user|
-        expect(page.body).to include('<img class="avatar" src="/assets/profile-b5.png">')
+        expect(page.body).to include('<img class="avatar" src="/assets/profile-b5574d48bf28eec6ac41fb76c558ac3415665791f266fd2f04ae2335a0b0cecd.png">')
       end
     end
 
